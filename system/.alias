@@ -1,0 +1,68 @@
+# Shortcuts
+
+alias zshconfig="vi ~/.zshrc"
+
+# Default options
+alias grep='grep --color=auto '
+alias cp='cp -i'
+alias mv='mv -i'
+alias du='du -h'
+alias df='df -h'
+alias tmux="TERM=screen-256color-bce tmux -u2"
+
+# Global aliases
+
+if $(is-supported "alias -g"); then
+  alias -g G="| grep -i"
+  alias -g H="| head"
+  alias -g T="| tail"
+  alias -g L="| less"
+fi
+
+# List declared aliases, functions, paths
+
+alias aliases="alias | sed 's/=.*//'"
+alias functions="declare -f | grep '^[a-z].* ()' | sed 's/{$//'"
+alias paths='echo -e ${PATH//:/\\n}'
+
+# Directory listing/traversal
+
+# List all files colorized in long format
+alias l="exa -lF"
+# List all files colorized in long format, including dot files
+alias la="exa -laF"
+# List only directories
+alias lsd="ls -lF ${colorflag} | grep --color=never '^d'"
+
+# Network
+
+alias ip="curl -s ipinfo.io | jq -r '.ip'"
+alias ipl="ifconfig | grep -Eo 'inet (addr:)?([0-9]*\.){3}[0-9]*' | grep -Eo '([0-9]*\.){3}[0-9]*' | grep -v '127.0.0.1'"
+
+# Kubernetes
+
+alias k='kubectl'
+alias kcuc='k config use-context'
+alias kcsc='k config set-context'
+alias kcdc='k config delete-context'
+alias kccc='k config current-context'
+
+# pods
+alias kgpon='kubectl get pods --namespace'
+
+# replica set
+alias kgren='kubectl get replicaset --namespace'
+
+# Deployment management.
+alias kgdn='k get deployment --namespace'
+alias kddn='k describe deployment --namespace'
+alias ksdn='k scale deployment --namespace'
+
+alias k9s='k9s --request-timeout 50'
+
+# Miscellaneous
+
+alias hosts="sudo $EDITOR /etc/hosts"
+alias quit="exit"
+alias week="date +%V"
+alias speedtest="wget -O /dev/null http://speed.transip.nl/100mb.bin"

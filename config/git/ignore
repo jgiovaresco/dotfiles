@@ -1,0 +1,60 @@
+# Compiled source #
+###################
+*.com
+*.class
+*.dll
+*.exe
+*.o
+*.so
+
+# Logs #
+########
+*.log
+*.sqlit
+
+# Intellj projects #
+###################
+.idea
+*.iml
+
+# Java #
+########
+.java-version
+*.class
+hs_err_pid*
+
+# Maven #
+#########
+target/
+pom.xml.tag
+pom.xml.releaseBackup
+pom.xml.versionsBackup
+pom.xml.next
+release.properties
+
+# Web #
+#######
+*/bower_components
+node_modules
+.sass-cache
+
+# Jenv #
+########
+*.time
+shims/
+version
+maven-version
+versions/
+maven-versions/
+plugins/*
+
+# Sublime #
+###########
+*.sublime-project
+*.sublime-workspace
+
+# Ignore Mac DS_Store files
+.DS_Store
+
+# Leadformance
+.envrc

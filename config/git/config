@@ -1,0 +1,106 @@
+[user]
+    name = Julien Giovaresco
+    email = dev@giovaresco.fr
+    signingkey = 84B4AD10
+
+[alias]
+    # View the current working tree status using the short format
+    s = status -s
+    # Show verbose output about tags, branches or remotes
+    tags = tag -l
+    branches = branch -a
+    remotes = remote -v
+    # Shortcuts
+    st = status
+    co = checkout
+    br = branch
+    sta = stash
+    cb = checkout -b
+    # Color graph log view
+    graph = log --graph --color --pretty=format:"%C(yellow)%H%C(green)%d%C(reset)%n%x20%cd%n%x20%cn%x20(%ce)%n%x20%s%n"
+    lg = log --graph --pretty=tformat:'%Cred%h%Creset -%C(auto)%d%Creset %s %Cgreen(%an %ar)%Creset'
+    fp = fetch -p
+    git = !exec git
+    fixup = !sh -c 'SHA=$(git rev-parse $1) \
+            && git commit --fixup $SHA \
+            && git rebase -i --autosquash $SHA~' -
+[apply]
+
+[color]
+    diff = auto
+    status = auto
+    branch = auto
+    ui = auto
+
+[core]
+    # Use custom `.gitignore`
+    excludesfile = ~/.config/git/ignore
+    editor = vim
+    autocrlf = input
+    pager = diff-so-fancy | less --tabs=4 -RFX
+    precomposeunicode = true
+
+[diff]
+    mnemonicPrefix = true
+    # Detect copies as well as renames
+    renames = copies
+    tool = icdiff
+    wordRegex = .
+
+[difftool]
+    prompt = false
+
+[difftool "icdiff"]
+    cmd = /usr/local/bin/icdiff --line-numbers $LOCAL $REMOTE
+
+[diff "sopsdiffer"]
+	textconv = sops -d
+
+[grep]
+    extendedRegexp = true
+
+[log]
+    abbrevCommit = true
+
+[merge]
+    conflictstyle = diff3
+    # Include summaries of merged commits in newly created merge commit messages
+    log = true
+
+[mergetool]
+    keepBackup = false
+    keepTemporaries = false
+    prompt = false
+
+[push]
+
+    default = simple
+    followTags = true
+
+[pull]
+
+    rebase = preserve
+
+[status]
+
+    showUntrackedFiles = all
+
+[help]
+
+    # Automatically correct and execute mistyped commands
+    autocorrect = 1
+
+[url "https://github"]
+    insteadOf = git://github
+
+[rerere]
+    enabled = true
+
+[credential]
+    helper = osxkeychain
+
+[commit]
+    gpgsign = true
+
+[gpg]
+    program = /usr/local/bin/gpg

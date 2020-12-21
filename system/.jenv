@@ -1,0 +1,5 @@
+JENV_DIR=$HOMW/.jenv
+
+if [ -f $JENV_DIR/version ]; then
+  eval "$(jenv init -)"
+fi
