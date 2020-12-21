@@ -1,0 +1,5 @@
+# STARSHIP
+export STARSHIP_CONFIG="$HOME/.config/starship/starship.toml"
+
+# Starship
+eval "$(starship init zsh)"

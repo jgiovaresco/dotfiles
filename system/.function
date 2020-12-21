@@ -1,0 +1,11 @@
+# Get named var (usage: get "VAR_NAME")
+
+get() {
+  echo "${!1}"
+}
+
+# Add to path
+
+prepend-path() {
+  [ -d $1 ] && PATH="$1:$PATH"
+}
