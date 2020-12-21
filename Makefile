@@ -10,7 +10,7 @@ export STOW_DIR := $(DOTFILES_DIR)
 
 all: $(OS)
 
-macos: sudo core-macos packages link
+macos: sudo core-macos keylayout packages link
 
 core-macos: brew zsh git npm
 
@@ -75,3 +75,8 @@ test:
 
 clean-python:
 	rm -f '/usr/local/bin/2to3'
+
+keylayout:
+	mkdir -p ~/Library/Keyboard\ Layouts && \
+	cd ~/Library/Keyboard\ Layouts && \
+	curl https://qwerty-lafayette.org/releases/lafayette_macosx_v0.6.keylayout --output lafayette_macosx.keylayout
