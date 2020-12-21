@@ -41,8 +41,8 @@ unlink: stow-$(OS)
 brew:
 	is-executable brew || curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh | bash
 
-zsh: ZSH=/usr/local/bin/zsh
-zsh: SHELLS=/private/etc/shells
+zsh: ZSH=/bin/zsh
+zsh: SHELLS=/etc/shells
 zsh: brew
 ifdef GITHUB_ACTION
 	if ! grep -q $(ZSH) $(SHELLS); then \
