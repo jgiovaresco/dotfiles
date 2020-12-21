@@ -5,6 +5,7 @@ PATH := $(DOTFILES_DIR)/bin:$(PATH)
 NVM_DIR := $(HOME)/.nvm
 OMZSH_DIR := $(HOME)/.oh-my-zsh
 ZSH_CUSTOM := $(OMZSH_DIR)/custom
+TMUX_DIR := $(HOME)/.tmux
 export XDG_CONFIG_HOME := $(HOME)/.config
 export STOW_DIR := $(DOTFILES_DIR)
 
@@ -78,10 +79,9 @@ cask-apps: brew
 	xattr -d -r com.apple.quarantine ~/Library/QuickLook
 
 tmux: brew
-	brew install tmux && \
-	cd && \
-	git clone https://github.com/gpakosz/.tmux.git && \
-	ln -s -f .tmux/.tmux.conf
+	brew install tmux;
+	if ! [ -d $(TMUX_DIR)/.git ]; then git clone https://github.com/gpakosz/.tmux.git $(TMUX_DIR); fi
+	ln -s -f $(TMUX_DIR)/.tmux.conf $(HOME)/.tmux.conf;
 
 test:
 	. $(NVM_DIR)/nvm.sh; bats test
