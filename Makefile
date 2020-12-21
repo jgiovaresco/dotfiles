@@ -12,7 +12,7 @@ all: $(OS)
 
 macos: sudo core-macos keylayout packages link
 
-core-macos: brew zsh git npm
+core-macos: brew zsh git npm tmux
 
 stow-macos: brew
 	is-executable stow || brew install stow
@@ -69,6 +69,12 @@ brew-packages: brew clean-python
 cask-apps: brew
 	brew bundle --file=$(DOTFILES_DIR)/macos/install/Caskfile || true
 	xattr -d -r com.apple.quarantine ~/Library/QuickLook
+
+tmux: brew
+	brew install tmux && \
+	cd && \
+	git clone https://github.com/gpakosz/.tmux.git && \
+	ln -s -f .tmux/.tmux.conf
 
 test:
 	. $(NVM_DIR)/nvm.sh; bats test
