@@ -3,6 +3,8 @@ DOTFILES_DIR := $(shell dirname $(realpath $(firstword $(MAKEFILE_LIST))))
 OS := $(shell bin/is-supported bin/is-macos macos)
 PATH := $(DOTFILES_DIR)/bin:$(PATH)
 NVM_DIR := $(HOME)/.nvm
+OMZSH_DIR := $(HOME)/.oh-my-zsh
+ZSH_CUSTOM := $(OMZSH_DIR)/custom
 export XDG_CONFIG_HOME := $(HOME)/.config
 export STOW_DIR := $(DOTFILES_DIR)
 
@@ -12,7 +14,7 @@ all: $(OS)
 
 macos: sudo core-macos keylayout packages link
 
-core-macos: brew zsh git npm tmux
+core-macos: brew zsh oh-my-zsh git npm tmux
 
 stow-macos: brew
 	is-executable stow || brew install stow
@@ -55,6 +57,11 @@ else
 		chsh -s $(ZSH); \
 	fi
 endif
+
+oh-my-zsh: zsh
+	if ! [ -d $(OMZSH_DIR)/.git ]; then git clone https://github.com/ohmyzsh/ohmyzsh.git $(OMZSH_DIR); fi
+	if ! [ -d $(ZSH_CUSTOM)/plugins/zsh-syntax-highlighting/.git ]; then git clone https://github.com/zsh-users/zsh-syntax-highlighting.git $(ZSH_CUSTOM)/plugins/zsh-syntax-highlighting; fi
+	if ! [ -d $(ZSH_CUSTOM)/plugins/zsh-autosuggestions/.git ]; then git clone https://github.com/zsh-users/zsh-autosuggestions $(ZSH_CUSTOM)/plugins/zsh-autosuggestions; fi
 
 git: brew
 	brew install git git-extras
