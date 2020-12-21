@@ -1,1 +1,4 @@
 system/.custom
+
+Brewfile.lock.json
+Caskfile.lock.json
