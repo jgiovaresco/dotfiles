@@ -1,0 +1,41 @@
+name: Dotfiles Installation
+
+on:
+  push:
+
+jobs:
+  install:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [macos-10.15]
+
+    steps:
+      - name: Clean up installed software
+        if: startsWith(matrix.os, 'macos')
+        run: |
+          brew uninstall --force $(brew list --formula)
+          brew cask uninstall --force brave-browser google-chrome
+          brew cleanup --prune-prefix
+          /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/uninstall.sh)"
+          rm -rf "$NVM_DIR"
+
+      - name: Download and install available system updates
+        if: startsWith(matrix.os, 'macos')
+        run: |
+          sudo softwareupdate -i -a
+
+      - name: Clone this repository
+        uses: actions/checkout@v2
+
+      - name: Install using Makefile
+        run: |
+          if [ "$RUNNER_OS" == "macOS" ]; then
+            make
+          else
+            sudo make
+          fi
+
+      - name: Verify shell setup
+        run: source $HOME/.zshrc
+        shell: zsh
