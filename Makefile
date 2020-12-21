@@ -12,7 +12,7 @@ all: $(OS)
 
 macos: sudo core-macos keylayout packages link
 
-core-macos: brew zsh git npm tmux
+core-macos: brew zsh oh-my-zsh git npm tmux
 
 stow-macos: brew
 	is-executable stow || brew install stow
@@ -55,6 +55,9 @@ else
 		chsh -s $(ZSH); \
 	fi
 endif
+
+oh-my-zsh: zsh
+	sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 
 git: brew
 	brew install git git-extras
