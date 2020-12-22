@@ -6,6 +6,9 @@ NVM_DIR := $(HOME)/.nvm
 OMZSH_DIR := $(HOME)/.oh-my-zsh
 ZSH_CUSTOM := $(OMZSH_DIR)/custom
 TMUX_DIR := $(HOME)/.tmux
+
+JENV_DIR := $(HOME)/.jenv
+
 export XDG_CONFIG_HOME := $(HOME)/.config
 export STOW_DIR := $(DOTFILES_DIR)
 
@@ -93,3 +96,11 @@ keylayout:
 	mkdir -p ~/Library/Keyboard\ Layouts && \
 	cd ~/Library/Keyboard\ Layouts && \
 	curl https://qwerty-lafayette.org/releases/lafayette_macosx_v0.6.keylayout --output lafayette_macosx.keylayout
+
+java: brew
+	brew install openjdk@8 openjdk@11 maven gradle;
+	if ! [ -d $(JENV_DIR)/.git ]; then git clone https://github.com/jenv/jenv.git $(JENV_DIR); fi
+	mkdir -p $(JENV_DIR)/versions;
+	jenv add /usr/local/opt/openjdk@8;
+	jenv add /usr/local/opt/openjdk@11;
+	jenv global 11;
