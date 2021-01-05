@@ -98,9 +98,11 @@ keylayout:
 	curl https://qwerty-lafayette.org/releases/lafayette_macosx_v0.6.keylayout --output lafayette_macosx.keylayout
 
 java: brew
-	brew install openjdk@8 openjdk@11 maven gradle;
+	brew tap adoptopenjdk/openjdk;
+	brew install --cask adoptopenjdk/openjdk/adoptopenjdk8 adoptopenjdk11;
+	brew install maven gradle;
 	if ! [ -d $(JENV_DIR)/.git ]; then git clone https://github.com/jenv/jenv.git $(JENV_DIR); fi
 	mkdir -p $(JENV_DIR)/versions;
-	jenv add /usr/local/opt/openjdk@8;
-	jenv add /usr/local/opt/openjdk@11;
+	jenv add /Library/Java/JavaVirtualMachines/adoptopenjdk-8.jdk/Contents/Home;
+	jenv add /Library/Java/JavaVirtualMachines/adoptopenjdk-11.jdk/Contents/Home;
 	jenv global 11;
