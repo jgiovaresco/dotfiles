@@ -25,6 +25,7 @@ cask "spotify"
 cask "unclutter"
 cask "visual-studio-code"
 cask "vlc"
+cask "zoom"
 
 # Quick Look Plugins (https://github.com/sindresorhus/quick-look-plugins)
 cask "qlcolorcode"
