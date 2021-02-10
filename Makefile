@@ -99,10 +99,11 @@ keylayout:
 
 java: brew
 	brew tap adoptopenjdk/openjdk;
-	brew install --cask adoptopenjdk/openjdk/adoptopenjdk8 adoptopenjdk11;
+	brew install --cask adoptopenjdk/openjdk/adoptopenjdk8 adoptopenjdk11 adoptopenjdk15;
 	brew install maven gradle;
 	if ! [ -d $(JENV_DIR)/.git ]; then git clone https://github.com/jenv/jenv.git $(JENV_DIR); fi
 	mkdir -p $(JENV_DIR)/versions;
 	jenv add /Library/Java/JavaVirtualMachines/adoptopenjdk-8.jdk/Contents/Home;
 	jenv add /Library/Java/JavaVirtualMachines/adoptopenjdk-11.jdk/Contents/Home;
+	jenv add /Library/Java/JavaVirtualMachines/adoptopenjdk-15.jdk/Contents/Home;
 	jenv global 11;
