@@ -15,10 +15,13 @@ bindkey '^[[1;9D' backward-word
 export DEFAULT_USER="jgiovaresco"
 
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
-plugins=(zsh-syntax-highlighting zsh-autosuggestions git brew docker docker-compose sudo extract gradle npm kubectl)
+plugins=(zsh-syntax-highlighting zsh-autosuggestions git brew docker docker-compose sudo extract gradle npm kubectl helm)
 
 autoload -U compinit && compinit
 autoload -U bashcompinit && bashcompinit
+if [ $commands[flux] ]; then
+  source <(flux completion zsh)
+fi
 
 source $ZSH/oh-my-zsh.sh
 
