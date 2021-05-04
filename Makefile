@@ -3,6 +3,7 @@ DOTFILES_DIR := $(shell dirname $(realpath $(firstword $(MAKEFILE_LIST))))
 OS := $(shell bin/is-supported bin/is-macos macos)
 PATH := $(DOTFILES_DIR)/bin:$(PATH)
 NVM_DIR := $(HOME)/.nvm
+RVM_DIR := $(HOME)/.rvm
 OMZSH_DIR := $(HOME)/.oh-my-zsh
 ZSH_CUSTOM := $(OMZSH_DIR)/custom
 TMUX_DIR := $(HOME)/.tmux
@@ -18,7 +19,7 @@ all: $(OS)
 
 macos: sudo core-macos keylayout packages link
 
-core-macos: brew zsh oh-my-zsh git npm tmux
+core-macos: brew zsh oh-my-zsh git npm rvm tmux
 
 stow-macos: brew
 	is-executable stow || brew install stow
@@ -73,6 +74,9 @@ git: brew
 npm:
 	if ! [ -d $(NVM_DIR)/.git ]; then git clone https://github.com/creationix/nvm.git $(NVM_DIR); fi
 	. $(NVM_DIR)/nvm.sh; nvm install --lts
+
+rvm:
+	if ! [ -d $(RVM_DIR)/bin ]; then curl -sSL https://get.rvm.io | bash -s stable --ruby; fi
 
 brew-packages: brew clean-python
 	brew bundle --file=$(DOTFILES_DIR)/macos/install/Brewfile
