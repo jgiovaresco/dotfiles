@@ -58,3 +58,10 @@ plugins/*
 
 # Leadformance
 .envrc
+
+# Gravitee
+*.cfe
+*.cfs
+*.si
+segments_*
+write.lock
