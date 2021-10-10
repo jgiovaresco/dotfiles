@@ -15,7 +15,7 @@ bindkey '^[[1;9D' backward-word
 export DEFAULT_USER="jgiovaresco"
 
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
-plugins=(zsh-syntax-highlighting zsh-autosuggestions git brew docker docker-compose sudo extract gradle npm kubectl helm mvn)
+plugins=(autojump zsh-syntax-highlighting zsh-autosuggestions git osx brew docker docker-compose sudo extract gradle npm kubectl helm mvn)
 
 autoload -U compinit && compinit
 autoload -U bashcompinit && bashcompinit
@@ -46,7 +46,7 @@ PATH="$DOTFILES_DIR/bin:$PATH"
 
 # Source the dotfiles (order matters)
 
-for DOTFILE in "$DOTFILES_DIR"/system/.{function,path,env,alias,starship,jenv,nvm,rust,rvm,gpg,autojump,direnv,custom}; do
+for DOTFILE in "$DOTFILES_DIR"/system/.{function,path,env,alias,starship,jenv,nvm,rust,rvm,gpg,direnv,custom}; do
   [ -f "$DOTFILE" ] && . "$DOTFILE"
 done
 
