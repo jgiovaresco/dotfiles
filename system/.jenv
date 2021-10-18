@@ -1,6 +1,0 @@
-JENV_DIR=$HOME/.jenv
-
-export PATH="$JENV_DIR/bin:$PATH"
-if [ -f $JENV_DIR/version ]; then
-  eval "$(jenv init -)"
-fi

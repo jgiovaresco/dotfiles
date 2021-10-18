@@ -38,16 +38,6 @@ release.properties
 node_modules
 .sass-cache
 
-# Jenv #
-########
-*.time
-shims/
-version
-maven-version
-versions/
-maven-versions/
-plugins/*
-
 # Sublime #
 ###########
 *.sublime-project

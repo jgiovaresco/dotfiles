@@ -46,7 +46,7 @@ PATH="$DOTFILES_DIR/bin:$PATH"
 
 # Source the dotfiles (order matters)
 
-for DOTFILE in "$DOTFILES_DIR"/system/.{function,path,env,alias,starship,jenv,nvm,rust,rvm,gpg,custom}; do
+for DOTFILE in "$DOTFILES_DIR"/system/.{function,path,env,alias,starship,nvm,rust,rvm,gpg,custom}; do
   [ -f "$DOTFILE" ] && . "$DOTFILE"
 done
 
@@ -67,3 +67,6 @@ export DOTFILES_DIR DOTFILES_EXTRA_DIR
 # Direnv
 eval "$(direnv hook zsh)"
 
+#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
+export SDKMAN_DIR="$HOME/.sdkman"
+[[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"

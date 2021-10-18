@@ -8,7 +8,7 @@ OMZSH_DIR := $(HOME)/.oh-my-zsh
 ZSH_CUSTOM := $(OMZSH_DIR)/custom
 TMUX_DIR := $(HOME)/.tmux
 
-JENV_DIR := $(HOME)/.jenv
+SDKMAN_DIR := $(HOME)/.sdkman
 
 export XDG_CONFIG_HOME := $(HOME)/.config
 export STOW_DIR := $(DOTFILES_DIR)
@@ -102,13 +102,13 @@ keylayout:
 	curl https://qwerty-lafayette.org/releases/lafayette_macosx_v0.6.keylayout --output lafayette_macosx.keylayout
 
 java: brew
-	brew tap adoptopenjdk/openjdk;
-	brew install --cask adoptopenjdk/openjdk/adoptopenjdk8 adoptopenjdk11 adoptopenjdk15;
-	brew install maven gradle --ignore-dependencies openjdk;
-	if ! [ -d $(JENV_DIR)/.git ]; then git clone https://github.com/jenv/jenv.git $(JENV_DIR); fi
-	mkdir -p $(JENV_DIR)/versions;
-	jenv add /Library/Java/JavaVirtualMachines/adoptopenjdk-8.jdk/Contents/Home;
-	jenv add /Library/Java/JavaVirtualMachines/adoptopenjdk-11.jdk/Contents/Home;
-	jenv add /Library/Java/JavaVirtualMachines/adoptopenjdk-15.jdk/Contents/Home;
-	jenv global 11;
-	jenv enable-plugin maven;
+	if ! [ -d $(SDKMAN_DIR) ]; then curl -s "https://get.sdkman.io" | bash; fi
+	ln -sf ${DOTFILES_DIR}/config/sdkman/config ${SDKMAN_DIR}/etc/config;
+
+	if ! [ -d $(SDKMAN_DIR)/candidates/java/8.0.302-tem ]; then . ${SDKMAN_DIR}/bin/sdkman-init.sh && sdk install java 8.0.302-tem; fi
+	if ! [ -d $(SDKMAN_DIR)/candidates/java/11.0.12-tem ]; then . ${SDKMAN_DIR}/bin/sdkman-init.sh && sdk install java 11.0.12-tem; fi
+	if ! [ -d $(SDKMAN_DIR)/candidates/java/17.0.0-tem ]; then . ${SDKMAN_DIR}/bin/sdkman-init.sh && sdk install java 17.0.0-tem; fi
+	if ! [ -d $(SDKMAN_DIR)/candidates/maven ]; then . ${SDKMAN_DIR}/bin/sdkman-init.sh && sdk install maven; fi
+	if ! [ -d $(SDKMAN_DIR)/candidates/gradle ]; then . ${SDKMAN_DIR}/bin/sdkman-init.sh && sdk install gradle; fi
+
+	. ${SDKMAN_DIR}/bin/sdkman-init.sh && sdk default java 11.0.12-tem;
