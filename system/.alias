@@ -60,6 +60,9 @@ alias ksdn='k scale deployment --namespace'
 
 alias k9s='k9s --request-timeout 50'
 
+# Gradle
+alias gw=gradle
+
 # Miscellaneous
 
 alias hosts="sudo $EDITOR /etc/hosts"
