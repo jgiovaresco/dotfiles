@@ -1,5 +1,0 @@
-RVM_DIR=$HOME/.rvm
-
-if [ -f "$RVM_DIR/bin/rvm" ]; then
-  export PATH="$RVM_DIR/bin:$PATH"
-fi

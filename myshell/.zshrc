@@ -46,7 +46,7 @@ PATH="$DOTFILES_DIR/bin:$PATH"
 
 # Source the dotfiles (order matters)
 
-for DOTFILE in "$DOTFILES_DIR"/system/.{function,path,env,alias,starship,nvm,rust,rvm,gpg,custom}; do
+for DOTFILE in "$DOTFILES_DIR"/system/.{function,path,env,alias,starship,nvm,rust,gpg,custom}; do
   [ -f "$DOTFILE" ] && . "$DOTFILE"
 done
 
