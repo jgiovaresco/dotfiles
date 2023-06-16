@@ -84,6 +84,7 @@ brew-packages: brew clean-python
 cask-apps: brew
 	brew bundle --file=$(DOTFILES_DIR)/macos/install/Caskfile || true
 	xattr -d -r com.apple.quarantine ~/Library/QuickLook
+	xattr -d com.apple.quarantine /Applications/Alacritty.app
 
 tmux: brew
 	brew install tmux;
