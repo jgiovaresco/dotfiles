@@ -1,8 +1,0 @@
-env:
-  XTERM: xterm-256color
-
-font:
-    size: 13.0
-
-window:
-  dynamic_title: true
