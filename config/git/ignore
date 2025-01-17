@@ -46,6 +46,10 @@ node_modules
 # Ignore Mac DS_Store files
 .DS_Store
 
+# Perso
+JGO*
+JGI*
+
 # Leadformance
 .envrc
 
@@ -56,3 +60,4 @@ node_modules
 segments_*
 write.lock
 gravitee-apim-rest-api/gravitee-apim-rest-api-standalone/gravitee-apim-rest-api-standalone-distribution/src/main/resources/data
+.working
