@@ -28,9 +28,9 @@ alias paths='echo -e ${PATH//:/\\n}'
 # Directory listing/traversal
 
 # List all files colorized in long format
-alias l="exa -lF"
+alias l="eza -lF"
 # List all files colorized in long format, including dot files
-alias la="exa -laF"
+alias la="eza -laF"
 # List only directories
 alias lsd="ls -lF ${colorflag} | grep --color=never '^d'"
 
