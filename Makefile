@@ -39,10 +39,10 @@ link: stow-$(OS)
 	ln -s $(DOTFILES_DIR)/myshell/.tmux.conf $(HOME)/.tmux.conf.local
 
 
-unlink: stow-$(OS)
+unlink:
 	stow --delete -t $(XDG_CONFIG_HOME) config
 	rm $(HOME)/.zshrc
-	$(HOME)/.tmux.conf.local
+	rm $(HOME)/.tmux.conf.local
 
 brew:
 	is-executable brew || curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh | bash
