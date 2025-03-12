@@ -9,3 +9,13 @@ get() {
 prepend-path() {
   [ -d $1 ] && PATH="$1:$PATH"
 }
+
+b64() {
+  if [ "$1" = "-e" ]; then
+    echo "$2" | base64 -w 0
+  elif [ "$1" = "-d" ]; then
+    echo "$2" | base64 --decode
+  else
+    echo "Usage: b64 [-e string] | [-d base64_string]"
+  fi
+}
