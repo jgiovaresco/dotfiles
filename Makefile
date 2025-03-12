@@ -19,7 +19,7 @@ all: $(OS)
 
 macos: sudo core-macos keylayout packages link
 
-core-macos: brew zsh oh-my-zsh git npm rvm tmux
+core-macos: brew zsh oh-my-zsh git npm tmux
 
 stow-macos: brew
 	is-executable stow || brew install stow
