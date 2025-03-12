@@ -1,3 +1,7 @@
+if [[ -z "$PROFILE_SOURCED" ]]; then
+    source ~/.zprofile
+fi
+
 # Path to your oh-my-zsh configuration.
 ZSH=$HOME/.oh-my-zsh
 

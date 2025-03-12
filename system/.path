@@ -5,6 +5,8 @@ is-executable getconf && PATH=$($(command -v getconf) PATH)
 
 # Prepend new items to path (if directory exists)
 
+prepend-path "$HOMEBREW_PREFIX/bin"
+prepend-path "$HOMEBREW_PREFIX/sbin"
 prepend-path "/bin"
 prepend-path "/usr/bin"
 prepend-path "/usr/local/bin"

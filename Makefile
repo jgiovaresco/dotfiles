@@ -36,16 +36,19 @@ link: stow-$(OS)
 	mkdir -p $(XDG_CONFIG_HOME)
 	stow -t $(XDG_CONFIG_HOME) config
 	ln -s $(DOTFILES_DIR)/myshell/.zshrc $(HOME)/.zshrc
+	ln -s $(DOTFILES_DIR)/myshell/.zprofile $(HOME)/.zprofile
 	ln -s $(DOTFILES_DIR)/myshell/.tmux.conf $(HOME)/.tmux.conf.local
 
 
 unlink:
 	stow --delete -t $(XDG_CONFIG_HOME) config
 	rm $(HOME)/.zshrc
+	rm $(HOME)/.zprofile
 	rm $(HOME)/.tmux.conf.local
 
 brew:
 	is-executable brew || curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh | bash
+	eval "$(/opt/homebrew/bin/brew shellenv)"
 
 zsh: ZSH=/bin/zsh
 zsh: SHELLS=/etc/shells
