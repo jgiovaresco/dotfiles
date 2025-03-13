@@ -110,10 +110,9 @@ java: brew
 	if ! [ -d $(SDKMAN_DIR) ]; then curl -s "https://get.sdkman.io" | bash; fi
 	ln -sf ${DOTFILES_DIR}/config/sdkman/config ${SDKMAN_DIR}/etc/config;
 
-	if ! [ -d $(SDKMAN_DIR)/candidates/java/8.0.302-tem ]; then . ${SDKMAN_DIR}/bin/sdkman-init.sh && sdk install java 8.0.302-tem; fi
-	if ! [ -d $(SDKMAN_DIR)/candidates/java/11.0.12-tem ]; then . ${SDKMAN_DIR}/bin/sdkman-init.sh && sdk install java 11.0.12-tem; fi
-	if ! [ -d $(SDKMAN_DIR)/candidates/java/17.0.0-tem ]; then . ${SDKMAN_DIR}/bin/sdkman-init.sh && sdk install java 17.0.0-tem; fi
+	if ! [ -d $(SDKMAN_DIR)/candidates/java/17.0.13-tem ]; then . ${SDKMAN_DIR}/bin/sdkman-init.sh && sdk install java 17.0.13-tem; fi
+	if ! [ -d $(SDKMAN_DIR)/candidates/java/21.0.6-tem ]; then . ${SDKMAN_DIR}/bin/sdkman-init.sh && sdk install java 21.0.6-tem; fi
 	if ! [ -d $(SDKMAN_DIR)/candidates/maven ]; then . ${SDKMAN_DIR}/bin/sdkman-init.sh && sdk install maven; fi
 	if ! [ -d $(SDKMAN_DIR)/candidates/gradle ]; then . ${SDKMAN_DIR}/bin/sdkman-init.sh && sdk install gradle; fi
 
-	. ${SDKMAN_DIR}/bin/sdkman-init.sh && sdk default java 11.0.12-tem;
+	. ${SDKMAN_DIR}/bin/sdkman-init.sh && sdk default java 21.0.6-tem;
