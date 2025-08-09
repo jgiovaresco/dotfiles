@@ -35,9 +35,9 @@ packages: brew-packages cask-apps
 link: stow-$(OS)
 	mkdir -p $(XDG_CONFIG_HOME)
 	stow -t $(XDG_CONFIG_HOME) config
-	ln -s $(DOTFILES_DIR)/myshell/.zshrc $(HOME)/.zshrc
-	ln -s $(DOTFILES_DIR)/myshell/.zprofile $(HOME)/.zprofile
-	ln -s $(DOTFILES_DIR)/myshell/.tmux.conf $(HOME)/.tmux.conf.local
+	ln -sf $(DOTFILES_DIR)/myshell/.zshrc $(HOME)/.zshrc
+	ln -sf $(DOTFILES_DIR)/myshell/.zprofile $(HOME)/.zprofile
+	ln -sf $(DOTFILES_DIR)/myshell/.tmux.conf $(HOME)/.tmux.conf.local
 
 
 unlink:
@@ -48,8 +48,8 @@ unlink:
 
 brew:
 	is-executable brew || curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh | bash
-	echo >> /Users/$USER/.zprofile
-	echo 'eval "$(/opt/homebrew/bin/brew shellenv)"' >> /Users/$USER/.zprofile
+	echo >> /Users/$(USER)/.zprofile
+	echo 'eval "$(/opt/homebrew/bin/brew shellenv)"' >> /Users/$(USER)/.zprofile
 	eval "$(/opt/homebrew/bin/brew shellenv)"
 
 zsh: ZSH=/bin/zsh
@@ -87,7 +87,6 @@ brew-packages: brew clean-python
 
 cask-apps: brew
 	brew bundle --file=$(DOTFILES_DIR)/macos/install/Caskfile || true
-	xattr -d -r com.apple.quarantine ~/Library/QuickLook
 	xattr -d -r com.apple.quarantine /Applications/Alacritty.app
 
 tmux: brew
