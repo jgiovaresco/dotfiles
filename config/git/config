@@ -1,7 +1,7 @@
 [user]
     name = Julien Giovaresco
     email = dev@giovaresco.fr
-    signingkey = 84B4AD10
+    signingkey = FFBF350862ACCD2C
 
 [alias]
     # View the current working tree status using the short format
