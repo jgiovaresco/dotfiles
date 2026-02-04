@@ -20,6 +20,8 @@ prepend-path "/sbin"
 prepend-path "/usr/sbin"
 prepend-path "/usr/local/sbin"
 prepend-path "/opt/homebrew/opt/libpq/bin"
+prepend-path "$HOME/.local/bin"
+prepend-path "$HOME/.antigravity/antigravity/bin"
 
 # Remove duplicates (preserving prepended items)
 # Source: http://unix.stackexchange.com/a/40755
