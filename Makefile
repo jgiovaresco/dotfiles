@@ -48,9 +48,8 @@ unlink:
 
 brew:
 	is-executable brew || curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh | bash
-	echo >> /Users/$(USER)/.zprofile
-	echo 'eval "$(/opt/homebrew/bin/brew shellenv)"' >> /Users/$(USER)/.zprofile
-	eval "$(/opt/homebrew/bin/brew shellenv)"
+	grep -q 'brew shellenv' /Users/$(USER)/.zprofile || echo 'eval "$$(/opt/homebrew/bin/brew shellenv)"' >> /Users/$(USER)/.zprofile
+	eval "$$(/opt/homebrew/bin/brew shellenv)"
 
 zsh: ZSH=/bin/zsh
 zsh: SHELLS=/etc/shells
