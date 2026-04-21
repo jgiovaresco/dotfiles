@@ -23,6 +23,7 @@ prepend-path "/opt/homebrew/opt/libpq/bin"
 prepend-path "$HOME/.gravitee/bin"
 prepend-path "$HOME/.local/bin"
 prepend-path "$HOME/.antigravity/antigravity/bin"
+prepend-path "/Applications/Obsidian.app/Contents/MacOS"
 
 # Remove duplicates (preserving prepended items)
 # Source: http://unix.stackexchange.com/a/40755
