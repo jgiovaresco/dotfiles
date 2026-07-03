@@ -1,6 +1,6 @@
 [user]
     name = Julien Giovaresco
-    email = dev@giovaresco.fr
+	email = julien.giovaresco@graviteesource.com
     signingkey = FFBF350862ACCD2C
 
 [alias]
@@ -107,3 +107,5 @@
 
 [init]
 	defaultBranch = main
+[http]
+	sslCAInfo = /Library/Application Support/AikidoSecurity/EndpointProtection/run/endpoint-protection-git-combined-ca.pem
