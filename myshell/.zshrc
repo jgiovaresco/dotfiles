@@ -19,7 +19,7 @@ bindkey '^[[1;9D' backward-word
 export DEFAULT_USER="jgiovaresco"
 
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
-plugins=(autojump direnv zsh-syntax-highlighting zsh-autosuggestions git macos brew sudo extract gradle npm kubectl helm mvn)
+plugins=(autojump direnv zsh-syntax-highlighting zsh-autosuggestions docker docker-compose git macos brew sudo extract gradle npm kubectl helm mvn)
 
 autoload -U compinit && compinit
 autoload -U bashcompinit && bashcompinit
