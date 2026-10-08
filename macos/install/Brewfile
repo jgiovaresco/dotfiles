@@ -1,6 +1,6 @@
 tap "homebrew/bundle"
 tap "mongodb/brew"
-tap "slp/krun"
+
 
 brew "autojump"
 brew "azure-cli"
@@ -38,8 +38,6 @@ brew "mongodb-database-tools"
 brew "newman"
 brew "p7zip"
 brew "pandoc"
-brew "podman"
-brew "podman-compose"
 brew "peco"
 brew "pinentry-mac"
 brew "libpq"
