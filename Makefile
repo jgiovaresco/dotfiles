@@ -81,11 +81,18 @@ npm:
 rvm:
 	if ! [ -d $(RVM_DIR)/bin ]; then curl -sSL https://get.rvm.io | bash -s stable --ruby; fi
 
-brew-packages: brew clean-python
+brew-packages: brew clean-python brew-trust
 	brew bundle --file=$(DOTFILES_DIR)/macos/install/Brewfile
 
-cask-apps: brew
+cask-apps: brew brew-trust
 	brew bundle --file=$(DOTFILES_DIR)/macos/install/Caskfile || true
+
+# Trust third-party taps declared with `tap "x/y"` in Brewfile/Caskfile
+brew-trust: brew
+	for tap in $$(sed -nE 's#^tap "([^"]+)".*#\1#p' $(DOTFILES_DIR)/macos/install/Brewfile $(DOTFILES_DIR)/macos/install/Caskfile \
+			| tr 'A-Z' 'a-z' | grep -v '^homebrew/' | sort -u); do \
+		brew tap $$tap && brew trust --tap $$tap; \
+	done
 
 tmux: brew
 	brew install tmux;

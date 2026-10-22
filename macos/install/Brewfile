@@ -1,5 +1,6 @@
 tap "homebrew/bundle"
 tap "mongodb/brew"
+tap "azure/kubelogin"
 
 
 brew "autojump"
