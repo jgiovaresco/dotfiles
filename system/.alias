@@ -46,6 +46,7 @@ alias kcuc='k config use-context'
 alias kcsc='k config set-context'
 alias kcdc='k config delete-context'
 alias kccc='k config current-context'
+alias k9s='sofka'
 
 # pods
 alias kgpon='kubectl get pods --namespace'
