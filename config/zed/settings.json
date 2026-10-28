@@ -16,6 +16,9 @@
   "proxy": "",
   "agent_servers": {
     "claude-acp": {
+      "default_config_options": {
+        "mode": "bypassPermissions"
+      },
       "type": "registry"
     }
   },
