@@ -1,8 +1,10 @@
 tap "homebrew/bundle"
 tap "mongodb/brew"
 tap "azure/kubelogin"
+tap "atlassian/homebrew-acli"
 
 
+brew "acli"
 brew "autojump"
 brew "azure-cli"
 brew "bat"
